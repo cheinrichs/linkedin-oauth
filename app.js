@@ -42,8 +42,7 @@ passport.use(new LinkedInStrategy({
   scope: ['r_emailaddress', 'r_basicprofile'],
   state: true
 }, function(accessToken, refreshToken, profile, done) {
-  console.log(profile);
-  done(null, {id: profile.id, displayName: profile.displayName})
+  done(null, {id: profile.id, displayName: profile.displayName, token: accessToken})
 }));
 
 app.get('/auth/linkedin/callback', passport.authenticate('linkedin', {
